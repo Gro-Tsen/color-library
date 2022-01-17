@@ -464,3 +464,47 @@ blackbody_xyz (double temp, double *x, double *y, double *z)
   *y = runy;
   *z = runz;
 }
+
+void
+rayleigh_jeans_cone (double temp, double *cone_l, double *cone_m, double *cone_s)
+{
+  int i;
+  double runl, runm, runs;
+  double lambda;
+  double spec;
+
+  runl = 0.;  runm = 0.;  runs = 0.;
+  for ( i=0 ; i<CONE_SENS_DATA_SIZE ; i++ )
+    {
+      lambda = cone_sens[i].wavelength * nanometers;
+      spec = 2.*boltzmann_constant*temp*nanometers / pow(lambda,4.);
+      runl += cone_sens[i].cone_l * spec;
+      runm += cone_sens[i].cone_m * spec;
+      runs += cone_sens[i].cone_s * spec;
+    }
+  *cone_l = runl;
+  *cone_m = runm;
+  *cone_s = runs;
+}
+
+void
+rayleigh_jeans_xyz (double temp, double *x, double *y, double *z)
+{
+  int i;
+  double runx, runy, runz;
+  double lambda;
+  double spec;
+
+  runx = 0.;  runy = 0.;  runz = 0.;
+  for ( i=0 ; i<CIE_CMF_DATA_SIZE ; i++ )
+    {
+      lambda = cie_cmf[i].wavelength * nanometers;
+      spec = 2.*boltzmann_constant*temp*nanometers / pow(lambda,4.);
+      runx += cie_cmf[i].xm * spec;
+      runy += cie_cmf[i].ym * spec;
+      runz += cie_cmf[i].zm * spec;
+    }
+  *x = runx;
+  *y = runy;
+  *z = runz;
+}

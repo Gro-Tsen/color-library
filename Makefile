@@ -6,7 +6,7 @@ LDLIBS = -lm -lpng
 
 all: spectrum.png antispectrum.png speclum.png blackbody.png \
   xydiagram-dark.png xydiagram-light.png \
-  huediagram-520.png huediagram-550.png \
+  huediagram-520.png huediagram-550.png huediagram-570.png \
   vision.png gammatest.png conecol.png conecol2.png \
   sample-color.png sample-saturated.png sample-hue.png \
   sample-protanope.png sample-protanomalous.png \
@@ -18,23 +18,23 @@ all: spectrum.png antispectrum.png speclum.png blackbody.png \
   sample2-deuteranope.png sample2-deuteranomalous.png \
   sample2-tritanope.png sample2-tritanomalous.png \
   sample2-long.png sample2-medium.png sample2-short.png sample2-lum.png \
-  srgbtocie cietosrgb huetosrgb blackbodytosrgb
+  srgbtocie cietosrgb huetosrgb blackbodytosrgb rayleighjeanstosrgb
 
 clean:
 	-$(RM) data.o library.o
 	-$(RM) makespectrum.o makeantispectrum.o makespeclum.o makeblackbody.o \
 	  makevision.o makegammatest.o makeconecol.o makeconecol2.o \
 	  filtercolor.o filtervision.o splitvision.o \
-	  srgbtocie.o cietosrgb.o huetosrgb.o blackbodytosrgb.o
+	  srgbtocie.o cietosrgb.o huetosrgb.o blackbodytosrgb.o rayleighjeanstosrgb.o
 	-$(RM) makexydiagram.o makehuediagram.o
 	-$(RM) makespectrum makeantispectrum makespeclum makeblackbody \
 	  makevision makegammatest makeconecol makeconecol2 \
 	  filtercolor filtervision splitvision \
-	  srgbtocie cietosrgb huetosrgb blackbodytosrgb
+	  srgbtocie cietosrgb huetosrgb blackbodytosrgb rayleighjeanstosrgb
 	-$(RM) makexydiagram makehuediagram
 	-$(RM) spectrum.png antispectrum.png speclum.png blackbody.png \
 	  xydiagram-dark.png xydiagram-light.png \
-	  huediagram-520.png huediagram-550.png \
+	  huediagram-520.png huediagram-550.png huediagram-570.png \
 	  vision.png gammatest.png conecol.png conecol2.png \
 	  sample-color.png sample-saturated.png sample-hue.png \
 	  sample-protanope.png sample-protanomalous.png \
@@ -45,10 +45,10 @@ clean:
 	  sample2-protanope.png sample2-protanomalous.png \
 	  sample2-deuteranope.png sample2-deuteranomalous.png \
 	  sample2-tritanope.png sample2-tritanomalous.png \
-	  sample2-long.png sample2-medium.png sample2-short.png samle2-lum.png
+	  sample2-long.png sample2-medium.png sample2-short.png sample2-lum.png
 	-$(RM) srgbtocie
 	-$(RM) cietosrgb
-	-$(RM) huetosrgb blackbodytosrgb
+	-$(RM) huetosrgb blackbodytosrgb rayleighjeanstosrgb
 
 makespectrum.o: data.h library.h
 makeantispectrum.o: data.h library.h
@@ -67,6 +67,7 @@ srgbtocie.o: library.h
 cietosrgb.o: library.h
 huetosrgb.o: library.h
 blackbodytosrgb.o: library.h
+rayleighjeanstosrgb.o: library.h
 
 makespectrum: makespectrum.o data.o library.o
 makeantispectrum: makeantispectrum.o data.o library.o
@@ -85,6 +86,7 @@ srgbtocie: srgbtocie.o data.o library.o
 cietosrgb: cietosrgb.o data.o library.o
 huetosrgb: huetosrgb.o data.o library.o
 blackbodytosrgb: blackbodytosrgb.o data.o library.o
+rayleighjeanstosrgb: rayleighjeanstosrgb.o data.o library.o
 
 spectrum.png: makespectrum
 	./makespectrum > spectrum.png
@@ -102,6 +104,8 @@ huediagram-520.png: makehuediagram
 	./makehuediagram 520 > huediagram-520.png
 huediagram-550.png: makehuediagram
 	./makehuediagram 550 > huediagram-550.png
+huediagram-570.png: makehuediagram
+	./makehuediagram 570 > huediagram-570.png
 vision.png: makevision
 	./makevision > vision.png
 gammatest.png: makegammatest
