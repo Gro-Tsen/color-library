@@ -1,0 +1,10 @@
+ss2_10e_1.txt	2-deg cone fundamentals, log(energy) in 1nm steps
+linss2_10e_1.txt 2-deg cone fundamentals, linear energy in 1nm steps
+logssvl2e_1.txt	2-deg photopic luminosity fun. (1.50*l+m for peak at 1), log
+ssvl2e_1.txt	2-deg photopic luminosity fun. (1.50*l+m for peak at 1), lin
+ssmb_1.txt	MB chromaticity coordinates (r,g,b)
+ciexyzjv.txt	CIE 1931 2-deg XYZ CMFs, modified by Judd and Vos
+ciexyz31_1.txt	CIE 1931 2-deg XYZ CMFs
+Illuminantd65.txt CIE Illuminant D65
+vme_1.txt	CIE 2-deg photopic lum. fun., modified by Judd and Vos (V_M)
+scvle_1.txt	CIE 1951 scotopic lum. fun. (V')
